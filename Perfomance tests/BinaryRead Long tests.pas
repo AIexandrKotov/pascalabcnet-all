@@ -1,4 +1,4 @@
-﻿program BinaryRead Long tests;
+﻿program BinaryRead_Long_tests;
 
 uses System;
 uses System.IO;

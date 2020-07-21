@@ -1,3 +1,5 @@
 
 *.opt
 *.exe
+*.pdb
+*.log

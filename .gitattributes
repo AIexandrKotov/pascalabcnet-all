@@ -1,1 +1,2 @@
 GitAttrTest/*.dat linguist-language=Java
+GitAttrTest/*.pas linguist-language=C++

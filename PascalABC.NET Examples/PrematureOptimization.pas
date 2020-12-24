@@ -1,6 +1,7 @@
 ﻿uses System;
 uses System.Diagnostics;
 uses System.Threading;
+uses System.Runtime.CompilerServices;
 
 type
   T = class
@@ -65,6 +66,7 @@ type
       if (k = 105) or (k = 129) or (k = 204) then field['105'] := true;
     end;
     
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     static procedure Method2(k: byte);
     begin
       CallMethod(k, '100', 100);

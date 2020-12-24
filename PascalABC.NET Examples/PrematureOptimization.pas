@@ -113,7 +113,29 @@ type
       sw2.Stop();
       $'Call   : {sw2.ElapsedMilliseconds}'.Println;
     end;
-
+    
+    static procedure DelegateTest(ups: integer);
+    begin
+      if ups > -1 then $'- UPS {ups}'.Println() else $'- UPS UNLOCKED'.Println();
+      SetUps(ups);
+      var sw1 := new Stopwatch();
+      var sw2 := new Stopwatch();
+      var act: procedure(k: byte);
+      
+      act := Method1;
+      sw1.Start();
+      loop 100000 do
+        for var i := 0 to 255 do act(i);
+      sw1.Stop();
+      $'Direct : {sw1.ElapsedMilliseconds}'.Println;
+      
+      act := Method2;
+      sw2.Start();
+      loop 100000 do
+        for var i := 0 to 255 do act(i);
+      sw2.Stop();
+      $'Call   : {sw2.ElapsedMilliseconds}'.Println;
+    end;
   end;
   
 begin
@@ -121,4 +143,11 @@ begin
   T.Test(60);
   T.Test(120);
   T.Test(-1);
+  
+  Println; 'Delegates: '.Println;
+  
+  T.DelegateTest(30);
+  T.DelegateTest(60);
+  T.DelegateTest(120);
+  T.DelegateTest(-1);
 end.

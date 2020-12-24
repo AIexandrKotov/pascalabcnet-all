@@ -4,10 +4,14 @@ uses System.Threading;
 uses System.Runtime.CompilerServices;
 
 type
+  Deleg = procedure(k: byte);
+
   T = class
     static field: Dictionary<string, boolean>;
     
     static current_ups: TimeSpan;
+    //static act: Deleg;
+    
     static procedure SetUps(ups: integer);
     begin
       if ups = -1 then current_ups := TimeSpan.Zero
@@ -41,21 +45,25 @@ type
       th.Start();
     end;
     
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     static procedure CallMethod(k: byte; s: string; k1: byte);
     begin
       if (k = k1) then field[s] := true;
     end;
     
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     static procedure CallMethod(k: byte; s: string; k1, k2: byte);
     begin
       if (k = k1) or (k = k2) then field[s] := true;
     end;
     
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     static procedure CallMethod(k: byte; s: string; k1, k2, k3: byte);
     begin
       if (k = k1) or (k = k2) or (k = k3) then field[s] := true;
     end;
     
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     static procedure Method1(k: byte);
     begin
       if (k = 100) then field['100'] := true;
@@ -84,6 +92,7 @@ type
       for var i := 0 to 255 do
         Method2(i);
     end;
+    
     
     static procedure Test(ups: integer);
     begin

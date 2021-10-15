@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test>
+	<a>
+		<b v="1">
+			<c v="4"/>
+			<c v="5"/>
+		</b>
+		<b v="2"/>
+	</a>
+</test>

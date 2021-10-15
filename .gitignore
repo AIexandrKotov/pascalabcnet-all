@@ -3,3 +3,4 @@
 *.exe
 *.pdb
 *.log
+Perfomance tests/bytetest.dat

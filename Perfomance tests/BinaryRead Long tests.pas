@@ -26,9 +26,9 @@ procedure Start;
 begin
   var stream := &File.Create(filename);
   var bw := new BinaryWriter(stream);
-  bw.Write(100000000);
+  bw.Write(10000000);
   var x := ToInt64(16, 32, 64);
-  loop 100000000 do bw.Write(x);
+  loop 10000000 do bw.Write(x);
   bw.Dispose();
   stream.Dispose();
 end;
